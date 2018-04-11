@@ -1,6 +1,6 @@
 <?php
 
-namespace ImageFirst_Customizer\inc;
+namespace PMPro_Diagnostics\inc;
 
 
 defined( 'ABSPATH' ) || die( 'File cannot be accessed directly' );

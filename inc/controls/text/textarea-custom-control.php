@@ -1,5 +1,5 @@
 <?php
-namespace ImageFirst_Customizer\inc\controls\text;
+namespace PMPro_Diagnostics\inc\controls\text;
 
 /**
  * Customize for textarea, extend the WP customizer

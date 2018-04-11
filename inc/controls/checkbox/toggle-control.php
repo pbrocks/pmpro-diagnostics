@@ -1,6 +1,6 @@
 <?php
 
-namespace ImageFirst_Customizer\inc\controls\checkbox;
+namespace PMPro_Diagnostics\inc\controls\checkbox;
 
 defined( 'ABSPATH' ) || die( 'File cannot be accessed directly' );
 

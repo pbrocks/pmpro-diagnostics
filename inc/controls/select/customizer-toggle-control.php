@@ -1,6 +1,6 @@
 <?php
 
-namespace ImageFirst_Customizer\inc\controls\select;
+namespace PMPro_Diagnostics\inc\controls\select;
 
 defined( 'ABSPATH' ) || die( 'File cannot be accessed directly' );
 

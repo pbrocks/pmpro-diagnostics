@@ -1,5 +1,5 @@
 <?php
-namespace ImageFirst_Customizer\inc\controls\text;
+namespace PMPro_Diagnostics\inc\controls\text;
 
 defined( 'ABSPATH' ) || die( 'File cannot be accessed directly' );
 

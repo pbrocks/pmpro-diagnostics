@@ -1,12 +1,12 @@
 <?php
-namespace ImageFirst_Customizer;
+namespace PMPro_Diagnostics;
 
 defined( 'ABSPATH' ) || die( 'File cannot be accessed directly' );
 
 /**
  * This autoloader looks for class declarations as follows:
  *
- * ImageFirst_Customizer\inc\Excerpt_Count
+ * PMPro_Diagnostics\inc\Excerpt_Count
  * ^          ^   ^
  * ^          ^   class-excerpt-count.php
  * ^          in the /inc/ folder
@@ -15,7 +15,7 @@ defined( 'ABSPATH' ) || die( 'File cannot be accessed directly' );
 function autoload( $class ) {
 
 	// project-specific namespace prefix
-	$prefix = 'ImageFirst_Customizer\\';
+	$prefix = 'PMPro_Diagnostics\\';
 
 	// base directory for the namespace prefix
 	$base_dir = __DIR__ . '/';
