@@ -1,7 +1,5 @@
 <?php
-
 namespace PMPro_Diagnostics\inc;
-
 
 defined( 'ABSPATH' ) || die( 'File cannot be accessed directly' );
 
@@ -25,7 +23,7 @@ class Dev_Dashboard {
 	public static function dmq_load_scripts() {
 		wp_enqueue_style( 'diagnostic', plugins_url( '../css/diagnostic.css', __FILE__ ) );
 		wp_enqueue_script( 'jquery-ui', 'https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js' );
-		wp_enqueue_script( 'diagnostic', plugins_url( '../js/window-size.js',  __FILE__ ), array( 'jquery' ) );
+		wp_enqueue_script( 'diagnostic', plugins_url( '../js/window-size.js', __FILE__ ), array( 'jquery' ) );
 
 		$script = plugins_url( '../js/hide-show.js', __FILE__ );
 		wp_enqueue_script( 'hide-show', $script, array( 'jquery', 'jquery-ui' ), false, false );
@@ -61,8 +59,8 @@ class Dev_Dashboard {
 		$ret = '';
 		foreach ( $wp_filter[ $hook ] as $priority => $realhook ) {
 			foreach ( $realhook as $hook_k => $hook_v ) {
-				$hook_echo = (is_array( $hook_v['static function'] ) ? get_class( $hook_v['static function'][0] ) . ':' . $hook_v['static function'][1] : $hook_v['static function']);
-				$ret .= "\n$priority $hook_echo";
+				$hook_echo = ( is_array( $hook_v['static function'] ) ? get_class( $hook_v['static function'][0] ) . ':' . $hook_v['static function'][1] : $hook_v['static function'] );
+				$ret      .= "\n$priority $hook_echo";
 			}
 		}
 		 return $ret;
@@ -71,89 +69,38 @@ class Dev_Dashboard {
 		echo do_shortcode( '[info-message title="Text vs Logo" content="Select whether you want to show the logo image or header text in the Customizer."]' );
 	}
 	public static function main_dev_menu() {
-		add_menu_page( 'Dev Dashboard', 'Dev Dashboard', 'edit_posts', 'dev-dashboard.php',  array( __CLASS__, 'dev_menu_page' ), 'dashicons-tickets', 11 );
-		add_submenu_page( 'dev-dashboard.php', 'SubDash 1', 'SubDash 1', 'edit_posts', 'dev-subdash-1.php',  array( __CLASS__, 'dev_submenu_page_1' ) );
-		add_submenu_page( 'dev-dashboard.php', 'SubDash 2', 'Search Item', 'edit_posts', 'dev-subdash-2.php',  array( __CLASS__, 'dev_submenu_page_2' ) );
-		add_submenu_page( 'dev-dashboard.php', 'SubDash 3', 'Sort Return', 'edit_posts', 'dev-subdash-3.php',  array( __CLASS__, 'dev_submenu_page_3' ) );
-		add_submenu_page( 'dev-dashboard.php', 'SubDash 4', 'SubDash 4', 'edit_posts', 'dev-subdash-4.php',  array( __CLASS__, 'dev_submenu_page_4' ) );
-		add_submenu_page( 'dev-dashboard.php', '$get_bio', '$get_bio', 'edit_posts', 'dev-subdash-5.php',  array( __CLASS__, 'dev_submenu_page_5' ) );
+		add_menu_page( 'Dev Dashboard', 'Dev Dashboard', 'edit_posts', 'dev-dashboard.php', array( __CLASS__, 'dev_menu_page' ), 'dashicons-tickets', 11 );
+		add_submenu_page( 'dev-dashboard.php', 'SubDash 1', 'SubDash 1', 'edit_posts', 'dev-subdash-1.php', array( __CLASS__, 'dev_submenu_page_1' ) );
+		add_submenu_page( 'dev-dashboard.php', 'SubDash 2', 'Search Item', 'edit_posts', 'dev-subdash-2.php', array( __CLASS__, 'dev_submenu_page_2' ) );
+		add_submenu_page( 'dev-dashboard.php', 'SubDash 3', 'Sort Return', 'edit_posts', 'dev-subdash-3.php', array( __CLASS__, 'dev_submenu_page_3' ) );
+		add_submenu_page( 'dev-dashboard.php', 'SubDash 4', 'SubDash 4', 'edit_posts', 'dev-subdash-4.php', array( __CLASS__, 'dev_submenu_page_4' ) );
+		add_submenu_page( 'dev-dashboard.php', '$get_bio', '$get_bio', 'edit_posts', 'dev-subdash-5.php', array( __CLASS__, 'dev_submenu_page_5' ) );
 	}
 
 	public static function dev_menu_page() {
 		global $menu, $submenu, $wpdb;
+		echo '<div class="wrap">';
+		echo '<h2>' . __NAMESPACE__ . ' || ' . __CLASS__ . '</h2>';
+		echo '<h2>' . __FILE__ . ' line ' . __LINE__ . '</h2>';
+		new \PMPro_Diagnostics\inc\PMPro_Notification( 'Testing Error Notification', 'error' );
 
-		echo '<h2>' . __FILE__ . '</h2>';
 		echo '<h3>You are viewing this menu from a ';
 		echo Setup_Functions::detect_mobile_device();
 		echo ' device</h3>';
-		// wpdb_get_customer_info1();
-		$customer_number = 'DNAVA020';
-		$name = 'Baylor';
-		$username = 'paulrocks';
-		// $ccs1 = goodwill_connect_ccs();
-		$goodwill_db = new \wpdb(
-			CCS_DB_USER,
-			CCS_DB_PASSWORD,
-			CCS_DB_NAME,
-			CCS_DB_HOST
-		);
-		$user = $goodwill_db->get_row(
-			$goodwill_db->prepare(
-				'SELECT uname, emailaddr, dbnumber FROM users
-        	WHERE UPPER(uname) = UPPER(%s)',
-				$username
-			)
-		);
-		// $user = $ccs1->get_row(
-		// $ccs1->prepare(
-		// 'SELECT uname, emailaddr, dbnumber FROM users
-		// WHERE UPPER(uname) = UPPER(%s) AND upass = OLD_PASSWORD(%s)',
-		// $username, $password
-		// )
-		// );
-		$gwUser = new Goodwill_User();
-		$gwUser->username = $user->uname;
-		$gwUser->name = $user->uname;
-		$gwUser->database_number = $user->dbnumber;
-		$gwUser->email = $user->emailaddr;
-		$accessible_databases = $gwUser->get_database_names();
-
-		$userinfo = [
-			'username' => $user->uname,
-			'name' => $user->uname,
-			'database_number' => $user->dbnumber,
-			'email' => $user->emailaddr,
-			'accessibledbs' => $accessible_databases,
-		];
-
-		echo '<pre>userinfo ';
-		var_dump( $userinfo );
+		$get_post_types = get_post_types();
+		echo ' <pre> $get_post_types ';
+		print_r( $get_post_types );
 		echo '</pre>';
 
-		// search_contact_by_name( $name );
-		// search_contact_by_name( $name );
-		spit_out_customer_info( $customer_number );
-
-		// $customer_info = $customer_obj->get_customer_info( $customer_number );
-		$get_bio = get_bio( $customer_number );
-		echo ' <pre> $get_bio ';
-		print_r( $get_bio );
-		echo '</pre>';
-
+		// new PMPro_Notification( 'Testing Error Notification', 'error' );
+		echo '</div>';
 	}
 
 	public static function dev_submenu_page_1() {
 		echo '<div class="wrap">';
 		echo '<h2>' . __FUNCTION__ . '</h2>';
+		echo '<h2>' . __FILE__ . ' line ' . __LINE__ . '</h2>';
 
-		$name = 'Baylor';
-		$customer_info = if_master_db()->name_search( $name );
-		echo ' $each_customer array = ' . count( $customer_info ) . ' items';
-		foreach ( $customer_info as $key => $each_customer ) {
-			echo ' <pre> $each_customer array[' . $key . '] ';
-			print_r( $each_customer );
-			echo '</pre>';
-		}
 		echo ' <pre> $customer_info ';
 		// print_r( $customer_info );
 		echo '</pre>';
@@ -164,15 +111,8 @@ class Dev_Dashboard {
 	public static function dev_submenu_page_2() {
 		echo '<div class="wrap">';
 		echo '<h2>' . __FUNCTION__ . '</h2>';
+		echo '<h2>' . __FILE__ . ' line ' . __LINE__ . '</h2>';
 
-		$name = 'Baylor';
-		$customer_info = if_master_db()->name_search( $name );
-		echo ' $each_customer array = ' . count( $customer_info ) . ' items';
-		foreach ( $customer_info as $key => $each_customer ) {
-			echo ' <pre> $each_customer array[' . $key . '] ';
-			print_r( $each_customer );
-			echo '</pre>';
-		}
 		echo ' <pre> $customer_info ';
 		// print_r( $customer_info );
 		echo '</pre>';
@@ -183,29 +123,8 @@ class Dev_Dashboard {
 	public static function dev_submenu_page_3() {
 		echo '<div class="wrap">';
 		echo '<h2>' . __FUNCTION__ . '</h2>';
-		?>
-		<style type="text/css">
-		.wrap > ul > li > div
-			 {
-				float: left;
-			}
-		</style>
-		<?php
-		$name = 'Baylor';
-		$customer_info = if_master_db()->name_search( $name );
-		echo ' $each_customer array = ' . count( $customer_info ) . ' items';
-		echo '<ul>';
-		echo '<li><div style="width:30%;" class="pbrx-cmp-name">Company Name</div> <div style="width:13%;" class="pbrx-delnum">delnum</div> <div style="width:13%;" class="pbrx-custnum">custnum</div> <div style="width:13%;" class="pbrx-phone">phone</div></li><br>';
-		foreach ( $customer_info as $key => $each_customer ) {
-			$i = 0;
-			echo '<li><div style="width:30%;" class="pbrx-cmp-name">' . $each_customer->name . '</div>';
-			echo ' <div style="width:13%;" class="pbrx-delnum"> ' . $each_customer->delnum . ' </div>';
-			echo ' <div style="width:13%;" class="pbrx-custnum"> ' . $each_customer->custnum . ' </div>';
-			echo ' <div style="width:13%;" class="pbrx-phone"> ' . $each_customer->phone . ' </div>';
-			echo '</li><br>';
+		echo '<h2>' . __FILE__ . ' line ' . __LINE__ . '</h2>';
 
-		}
-		echo '</ul>';
 		echo '<pre>';
 		// print_r( $customer_info[0] );
 		echo '</pre>';
@@ -216,14 +135,8 @@ class Dev_Dashboard {
 	public static function dev_submenu_page_4() {
 		echo '<div class="wrap">';
 		echo '<h2>' . __FUNCTION__ . '</h2>';
+		echo '<h2>' . __FILE__ . ' line ' . __LINE__ . '</h2>';
 
-		$name = 'Baylor';
-		$customer_info = if_master_db()->name_search( $name );
-		foreach ( $customer_info as $key => $each_customer ) {
-			echo ' <pre> $each_customer array[' . $key . '] ';
-			print_r( $each_customer );
-			echo '</pre>';
-		}
 		echo ' <pre> $customer_info ';
 		// print_r( $customer_info );
 		echo '</pre>';
@@ -234,9 +147,7 @@ class Dev_Dashboard {
 	public static function dev_submenu_page_5() {
 		echo '<div class="wrap">';
 		echo '<h2>' . __FUNCTION__ . '</h2>';
-
-		$customer_number = 'BAYLO010';
-		$get_bio = if_master_db()->get_bio_info( $customer_number );
+		echo '<h2>' . __FILE__ . ' line ' . __LINE__ . '</h2>';
 
 		echo ' <pre> $get_bio ';
 		print_r( $get_bio );
@@ -261,7 +172,7 @@ class Dev_Dashboard {
 			$info = Setup_Functions::filtered_menu_items( $menu_key, $page_title );
 
 			// echo '<li>' . $info['url'] . '</li>';
-			$show_progress .= '<li><a href="' . $info['url'] . '">Step ' . ($key + 1) . '</a></li>';
+			$show_progress .= '<li><a href="' . $info['url'] . '">Step ' . ( $key + 1 ) . '</a></li>';
 		}
 		$show_progress .= '</ul>';
 
@@ -271,11 +182,11 @@ class Dev_Dashboard {
 	public static function wp_get_menu_array( $current_menu ) {
 
 		$array_menu = wp_get_nav_menu_items( $current_menu );
-		$menu = array();
+		$menu       = array();
 		$menu_count = 0;
 		foreach ( $array_menu as $m ) {
 			if ( empty( $m->menu_item_parent ) ) {
-				$menu[ $menu_count ] = array();
+				$menu[ $menu_count ]             = array();
 				$menu[ $menu_count ]['ID']       = $m->ID;
 				$menu[ $menu_count ]['title']    = $m->title;
 				$menu[ $menu_count ]['url']      = $m->url;
@@ -283,14 +194,14 @@ class Dev_Dashboard {
 			}
 			$menu_count++;
 		}
-		$submenu = array();
+		$submenu       = array();
 		$submenu_count = 0;
 		foreach ( $array_menu as $m ) {
 			if ( $m->menu_item_parent ) {
-				$submenu[ $submenu_count ] = array();
-				$submenu[ $submenu_count ]['ID']    = $m->ID;
-				$submenu[ $submenu_count ]['title'] = $m->title;
-				$submenu[ $submenu_count ]['url']   = $m->url;
+				$submenu[ $submenu_count ]                          = array();
+				$submenu[ $submenu_count ]['ID']                    = $m->ID;
+				$submenu[ $submenu_count ]['title']                 = $m->title;
+				$submenu[ $submenu_count ]['url']                   = $m->url;
 				$menu[ $m->menu_item_parent ]['children'][ $m->ID ] = $submenu[ $m->ID ];
 			}
 			$submenu_count++;

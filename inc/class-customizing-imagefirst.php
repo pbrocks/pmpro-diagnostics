@@ -1,7 +1,5 @@
 <?php
-
 namespace PMPro_Diagnostics\inc;
-
 
 defined( 'ABSPATH' ) || die( 'File cannot be accessed directly' );
 
@@ -135,11 +133,11 @@ class Customizing_ImageFirst {
 				$customizer_additions,
 				'show_footer_info', array(
 					'label'       => 'Show Footer Info',
-					'description'   => 'Show Footer Info => slide to turn on setting.',
-					'settings'   => 'show_footer_info',
-					'section' => 'title_tagline',
-					'type'    => 'ios',
-					'priority' => 44,
+					'description' => 'Show Footer Info => slide to turn on setting.',
+					'settings'    => 'show_footer_info',
+					'section'     => 'title_tagline',
+					'type'        => 'ios',
+					'priority'    => 44,
 				)
 			)
 		);
@@ -149,19 +147,19 @@ class Customizing_ImageFirst {
 		 */
 		$customizer_additions->add_setting(
 			'site_footer_info', array(
-				'default'      => 'ImageFirst',
+				'default'   => 'ImageFirst',
 				'transport' => 'refresh',
 			)
 		);
 
 		$customizer_additions->add_control(
 			'site_footer_info', array(
-				'section'  => 'title_tagline',
-				'type'     => 'text',
-				'settings' => 'site_footer_info',
+				'section'     => 'title_tagline',
+				'type'        => 'text',
+				'settings'    => 'site_footer_info',
 				'label'       => 'Footer Info',
 				'description' => 'Footer Info text =  \'site_footer_info\'.',
-				'priority' => 45,
+				'priority'    => 45,
 			)
 		);
 
@@ -170,7 +168,7 @@ class Customizing_ImageFirst {
 		 */
 		$customizer_additions->add_setting(
 			'site_accent_color', array(
-				'default'      => '#182863',
+				'default'   => '#182863',
 				'transport' => 'refresh',
 			)
 		);
@@ -180,9 +178,9 @@ class Customizing_ImageFirst {
 				$customizer_additions,
 				'site_accent_color',
 				array(
-					'label'      => __( 'Section Background Color', 'imagefirst' ),
-					'section'    => 'colors',
-					'settings'   => 'site_accent_color',
+					'label'    => __( 'Section Background Color', 'imagefirst' ),
+					'section'  => 'colors',
+					'settings' => 'site_accent_color',
 				)
 			)
 		);
@@ -192,7 +190,7 @@ class Customizing_ImageFirst {
 		 */
 		$customizer_additions->add_setting(
 			'footer_icon_color', array(
-				'default'      => '#fff',
+				'default'   => '#fff',
 				'transport' => 'refresh',
 			)
 		);
@@ -202,9 +200,9 @@ class Customizing_ImageFirst {
 				$customizer_additions,
 				'footer_icon_color',
 				array(
-					'label'      => __( 'Footer Icon Color', 'imagefirst' ),
-					'section'    => 'colors',
-					'settings'   => 'footer_icon_color',
+					'label'    => __( 'Footer Icon Color', 'imagefirst' ),
+					'section'  => 'colors',
+					'settings' => 'footer_icon_color',
 				)
 			)
 		);
@@ -221,27 +219,27 @@ class Customizing_ImageFirst {
 	private function file_attachments_section( $customizer_additions ) {
 		$customizer_additions->add_section(
 			'imagefirst_attachments', array(
-				'title'          => 'ImageFirst File Attachments',
-				'description'    => 'Description of the Attachments Section of the ImageFirst panel',
-				'priority'       => 30,
-				'panel'          => 'imagefirst_panel',
+				'title'       => 'ImageFirst File Attachments',
+				'description' => 'Description of the Attachments Section of the ImageFirst panel',
+				'priority'    => 30,
+				'panel'       => 'imagefirst_panel',
 			)
 		);
 		// Textbox control
 		$customizer_additions->add_setting(
 			'number_of_files', array(
-				'default'        => 4,
-				'type'           => 'option',
+				'default' => 4,
+				'type'    => 'option',
 			)
 		);
 		$customizer_additions->add_control(
 			'number_of_files', array(
-				'label'              => 'Number of Files',
-				'description'        => esc_html__( 'Number selected below indicates the available file slots for upload.' ),
-				'section'            => 'imagefirst_attachments',
-				'type'               => 'number',
-				'number_of_images'   => 'images',
-				'priority'           => 1,
+				'label'            => 'Number of Files',
+				'description'      => esc_html__( 'Number selected below indicates the available file slots for upload.' ),
+				'section'          => 'imagefirst_attachments',
+				'type'             => 'number',
+				'number_of_images' => 'images',
+				'priority'         => 1,
 			)
 		);
 
@@ -257,9 +255,9 @@ class Customizing_ImageFirst {
 		while ( $x <= $files ) {
 			$customizer_additions->add_setting(
 				"if_attachment_file_$x", array(
-					'default'           => '',
-					'capability'        => 'edit_theme_options',
-					'type'           => 'option',
+					'default'    => '',
+					'capability' => 'edit_theme_options',
+					'type'       => 'option',
 				)
 			);
 			$customizer_additions->add_control(
@@ -286,28 +284,28 @@ class Customizing_ImageFirst {
 	private function image_attachments_section( $customizer_additions ) {
 		$customizer_additions->add_section(
 			'imagefirst_images', array(
-				'title'          => 'ImageFirst Image Attachments',
-				'description'    => 'Description of the Image Attachments Section of the ImageFirst panel',
-				'priority'       => 30,
-				'panel'          => 'imagefirst_panel',
+				'title'       => 'ImageFirst Image Attachments',
+				'description' => 'Description of the Image Attachments Section of the ImageFirst panel',
+				'priority'    => 30,
+				'panel'       => 'imagefirst_panel',
 			)
 		);
 
 		// Textbox control
 		$customizer_additions->add_setting(
 			'number_of_images', array(
-				'default'        => 4,
-				'type'           => 'option',
+				'default' => 4,
+				'type'    => 'option',
 			)
 		);
 		$customizer_additions->add_control(
 			'number_of_images', array(
-				'label'              => 'Number of Images',
-				'description'        => esc_html__( 'Number selected below indicates the available image slots for upload.' ),
-				'section'            => 'imagefirst_images',
-				'type'               => 'number',
-				'number_of_images'   => 'images',
-				'priority'           => 1,
+				'label'            => 'Number of Images',
+				'description'      => esc_html__( 'Number selected below indicates the available image slots for upload.' ),
+				'section'          => 'imagefirst_images',
+				'type'             => 'number',
+				'number_of_images' => 'images',
+				'priority'         => 1,
 			)
 		);
 
@@ -325,10 +323,10 @@ class Customizing_ImageFirst {
 			$customizer_additions->add_setting(
 				"if_attachment_image_$x",
 				array(
-					'default'       => '',
-					'capability'    => 'edit_theme_options',
-					'type'          => 'option',
-					'transport'     => 'refresh',
+					'default'    => '',
+					'capability' => 'edit_theme_options',
+					'type'       => 'option',
+					'transport'  => 'refresh',
 				)
 			);
 
@@ -336,18 +334,18 @@ class Customizing_ImageFirst {
 				new \WP_Customize_Image_Control(
 					$customizer_additions, "if_attachment_image_$x",
 					array(
-						'label' => __( "Image $x Upload", 'imagefirst' ),
-						'section' => 'imagefirst_images',
-						'settings' => "if_attachment_image_$x",
+						'label'         => __( "Image $x Upload", 'imagefirst' ),
+						'section'       => 'imagefirst_images',
+						'settings'      => "if_attachment_image_$x",
 						'button_labels' => array( // Optional.
-							'select' => __( 'Select Image' ),
-							'change' => __( 'Change Image' ),
-							'remove' => __( 'Remove' ),
-							'default' => __( 'Default' ),
-							'placeholder' => __( 'No image selected' ),
-							'frame_title' => __( 'Select Image' ),
+							'select'       => __( 'Select Image' ),
+							'change'       => __( 'Change Image' ),
+							'remove'       => __( 'Remove' ),
+							'default'      => __( 'Default' ),
+							'placeholder'  => __( 'No image selected' ),
+							'frame_title'  => __( 'Select Image' ),
 							'frame_button' => __( 'Choose Image' ),
-							'priority' => 5,
+							'priority'     => 5,
 						),
 					)
 				)
@@ -366,10 +364,10 @@ class Customizing_ImageFirst {
 	private function create_alert_section( $customizer_additions ) {
 		$customizer_additions->add_section(
 			'imagefirst_section', array(
-				'title'          => 'ImageFirst Alert Section',
-				'description'    => 'Description of the ImageFirst Section of the ImageFirst panel',
-				'priority'       => 35,
-				'panel'          => 'imagefirst_panel',
+				'title'       => 'ImageFirst Alert Section',
+				'description' => 'Description of the ImageFirst Section of the ImageFirst panel',
+				'priority'    => 35,
+				'panel'       => 'imagefirst_panel',
 			)
 		);
 
@@ -392,11 +390,11 @@ class Customizing_ImageFirst {
 				$customizer_additions,
 				'show_imagefirst_alert', array(
 					'label'       => 'Show Front Alert Message',
-					'description'   => 'Show Front Alert Message',
-					'settings'   => 'show_imagefirst_alert',
-					'section' => 'imagefirst_section',
-					'type'    => 'ios',
-					'priority' => 1,
+					'description' => 'Show Front Alert Message',
+					'settings'    => 'show_imagefirst_alert',
+					'section'     => 'imagefirst_section',
+					'type'        => 'ios',
+					'priority'    => 1,
 				)
 			)
 		);
@@ -406,17 +404,17 @@ class Customizing_ImageFirst {
 		 */
 		$customizer_additions->add_setting(
 			'date_of_alert', array(
-				'default'      => date( 'l, jS F Y' ),
+				'default' => date( 'l, jS F Y' ),
 			)
 		);
 
 		$customizer_additions->add_control(
 			'date_of_alert', array(
-				'section'  => 'imagefirst_section',
-				'type'     => 'text',
+				'section'     => 'imagefirst_section',
+				'type'        => 'text',
 				'label'       => 'Date of Alert',
 				'description' => 'Effective date for this alert or announcement.',
-				'priority' => 1,
+				'priority'    => 1,
 			)
 		);
 
@@ -428,15 +426,15 @@ class Customizing_ImageFirst {
 		}
 		$customizer_additions->add_setting(
 			'front_alert_textbox', array(
-				'default'        => 'To add information here, you can edit this text box in Customize > ImageFirst Alert Section.',
+				'default' => 'To add information here, you can edit this text box in Customize > ImageFirst Alert Section.',
 			)
 		);
 		$customizer_additions->add_control(
 			new controls\text\Textarea_Custom_Control(
 				$customizer_additions, 'front_alert_textbox', array(
-					'label'       => 'Front Alert Message',
-					'section' => 'imagefirst_section',
-					'settings'   => 'front_alert_textbox',
+					'label'    => 'Front Alert Message',
+					'section'  => 'imagefirst_section',
+					'settings' => 'front_alert_textbox',
 					'priority' => 11,
 				)
 			)
@@ -447,8 +445,8 @@ class Customizing_ImageFirst {
 		 */
 		$customizer_additions->add_setting(
 			'second_imagefirst_alert', array(
-				'default'   => false,
-				'transport' => 'refresh',
+				'default'      => false,
+				'transport'    => 'refresh',
 				'capabilities' => 'manage_options',
 			)
 		);
@@ -462,11 +460,11 @@ class Customizing_ImageFirst {
 				$customizer_additions,
 				'second_imagefirst_alert', array(
 					'label'       => 'Show Some other Toggle',
-					'description'   => 'Show Some other Toggle => slide to turn on setting. Toggle is equivalent to a checkbox.',
-					'settings'   => 'second_imagefirst_alert',
-					'section' => 'imagefirst_second_section',
-					'type'    => 'ios',
-					'priority' => 1,
+					'description' => 'Show Some other Toggle => slide to turn on setting. Toggle is equivalent to a checkbox.',
+					'settings'    => 'second_imagefirst_alert',
+					'section'     => 'imagefirst_second_section',
+					'type'        => 'ios',
+					'priority'    => 1,
 				)
 			)
 		);
@@ -478,10 +476,10 @@ class Customizing_ImageFirst {
 	private function create_admin_section( $customizer_additions ) {
 		$customizer_additions->add_section(
 			'imagefirst_admin_section', array(
-				'title'          => 'ImageFirst Admin Section',
-				'description'    => 'Description of the ImageFirst Admin Section of the ImageFirst panel',
-				'priority'       => 25,
-				'panel'          => 'imagefirst_panel',
+				'title'       => 'ImageFirst Admin Section',
+				'description' => 'Description of the ImageFirst Admin Section of the ImageFirst panel',
+				'priority'    => 25,
+				'panel'       => 'imagefirst_panel',
 			)
 		);
 
@@ -490,16 +488,16 @@ class Customizing_ImageFirst {
 		// =============================
 		$customizer_additions->add_setting(
 			'if_attachment[page_select_1]', array(
-				'capability'     => 'edit_theme_options',
-				'type'           => 'option',
+				'capability' => 'edit_theme_options',
+				'type'       => 'option',
 			)
 		);
 		$customizer_additions->add_control(
 			'page_select_1', array(
-				'label'      => __( 'Page Select', 'imagefirst' ),
-				'section'    => 'imagefirst_admin_section',
-				'type'    => 'dropdown-pages',
-				'settings'   => 'if_attachment[page_select_1]',
+				'label'    => __( 'Page Select', 'imagefirst' ),
+				'section'  => 'imagefirst_admin_section',
+				'type'     => 'dropdown-pages',
+				'settings' => 'if_attachment[page_select_1]',
 			)
 		);
 
@@ -522,18 +520,18 @@ class Customizing_ImageFirst {
 				$customizer_additions,
 				'select_page_for_app', array(
 					'label'       => 'Select Page App',
-					'description'   => 'Select Page App => slide to turn on setting.',
-					'settings'   => 'select_page_for_app',
-					'section' => 'imagefirst_admin_section',
+					'description' => 'Select Page App => slide to turn on setting.',
+					'settings'    => 'select_page_for_app',
+					'section'     => 'imagefirst_admin_section',
 					// 'type'    => 'ios',
-					'priority' => 12,
+					'priority'    => 12,
 				)
 			)
 		);
 		$customizer_additions->add_setting(
 			'page_title_position', array(
-				'default'        => 'header',
-				'transport'      => 'refresh',
+				'default'   => 'header',
+				'transport' => 'refresh',
 			)
 		);
 
@@ -542,15 +540,15 @@ class Customizing_ImageFirst {
 				$customizer_additions,
 				'page_title_position',
 				array(
-					'label'          => __( 'Page Title Position', 'theme_name' ),
-					'section'        => 'imagefirst_admin_section',
-					'settings'       => 'page_title_position',
-					'type'           => 'radio',
-					'priority'       => 1,
-					'choices'        => array(
+					'label'    => __( 'Page Title Position', 'theme_name' ),
+					'section'  => 'imagefirst_admin_section',
+					'settings' => 'page_title_position',
+					'type'     => 'radio',
+					'priority' => 1,
+					'choices'  => array(
 						'header'  => __( 'Header' ),
 						'body'    => __( 'Body' ),
-						'neither'    => __( 'Don\'t Show' ),
+						'neither' => __( 'Don\'t Show' ),
 					),
 				)
 			)
@@ -558,8 +556,8 @@ class Customizing_ImageFirst {
 
 		$customizer_additions->add_setting(
 			'show_progress_nav', array(
-				'default'        => true,
-				'transport'      => 'refresh',
+				'default'   => true,
+				'transport' => 'refresh',
 			)
 		);
 
@@ -568,19 +566,19 @@ class Customizing_ImageFirst {
 				$customizer_additions,
 				'show_progress_nav', array(
 					'label'       => 'Show Progress Nav',
-					'description'   => 'Progress Nav is a header element that shows the steps in the process based on the pages set in the Sidebar menu ' . get_theme_mod( 'show_progress_nav' ) . ' option ' . get_option( 'show_progress_nav' ) . ' nope',
-					'settings'   => 'show_progress_nav',
-					'section' => 'imagefirst_admin_section',
-					'type'    => 'ios',
-					'priority' => 3,
+					'description' => 'Progress Nav is a header element that shows the steps in the process based on the pages set in the Sidebar menu ' . get_theme_mod( 'show_progress_nav' ) . ' option ' . get_option( 'show_progress_nav' ) . ' nope',
+					'settings'    => 'show_progress_nav',
+					'section'     => 'imagefirst_admin_section',
+					'type'        => 'ios',
+					'priority'    => 3,
 				)
 			)
 		);
 
 		$customizer_additions->add_setting(
 			'show_progress_bar', array(
-				'default'        => false,
-				'transport'      => 'refresh',
+				'default'   => false,
+				'transport' => 'refresh',
 			)
 		);
 
@@ -589,11 +587,11 @@ class Customizing_ImageFirst {
 				$customizer_additions,
 				'show_progress_bar', array(
 					'label'       => 'Show Progress Bar',
-					'description'   => 'Progress Bar is currently under construction, but it is designed to help visualize where in process agent is.',
-					'settings'   => 'show_progress_bar',
-					'section' => 'imagefirst_admin_section',
-					'type'    => 'ios',
-					'priority' => 4,
+					'description' => 'Progress Bar is currently under construction, but it is designed to help visualize where in process agent is.',
+					'settings'    => 'show_progress_bar',
+					'section'     => 'imagefirst_admin_section',
+					'type'        => 'ios',
+					'priority'    => 4,
 				)
 			)
 		);
@@ -610,19 +608,19 @@ class Customizing_ImageFirst {
 				$customizer_additions,
 				'show_footer_menu', array(
 					'label'       => 'Show Footer Directional Menu',
-					'description'   => 'Show Footer Directional Menu => slide to turn on setting.',
-					'settings'   => 'show_footer_menu',
-					'section' => 'imagefirst_admin_section',
-					'type'    => 'ios',
-					'priority' => 6,
+					'description' => 'Show Footer Directional Menu => slide to turn on setting.',
+					'settings'    => 'show_footer_menu',
+					'section'     => 'imagefirst_admin_section',
+					'type'        => 'ios',
+					'priority'    => 6,
 				)
 			)
 		);
 
 		$customizer_additions->add_setting(
 			'show_admin_bar_on_frontend', array(
-				'default'        => true,
-				'transport'      => 'refresh',
+				'default'   => true,
+				'transport' => 'refresh',
 			)
 		);
 
@@ -631,11 +629,11 @@ class Customizing_ImageFirst {
 				$customizer_additions,
 				'show_admin_bar_on_frontend', array(
 					'label'       => 'Show Adminbar Toggle',
-					'description'   => 'Show adminbar on frontend for non-admins theme_mod ' . get_theme_mod( 'show_admin_bar_on_frontend' ) . '  option => ' . get_option( 'show_admin_bar_on_frontend' ) . ' or nope',
-					'settings'   => 'show_admin_bar_on_frontend',
-					'section' => 'imagefirst_admin_section',
-					'type'    => 'ios',
-					'priority' => 9,
+					'description' => 'Show adminbar on frontend for non-admins theme_mod ' . get_theme_mod( 'show_admin_bar_on_frontend' ) . '  option => ' . get_option( 'show_admin_bar_on_frontend' ) . ' or nope',
+					'settings'    => 'show_admin_bar_on_frontend',
+					'section'     => 'imagefirst_admin_section',
+					'type'        => 'ios',
+					'priority'    => 9,
 				)
 			)
 		);
@@ -652,11 +650,11 @@ class Customizing_ImageFirst {
 				$customizer_additions,
 				'show_admin_info', array(
 					'label'       => 'Show Admin Info',
-					'description'   => 'Show Admin Info => slide to turn on setting.',
-					'settings'   => 'show_admin_info',
-					'section' => 'imagefirst_admin_section',
-					'type'    => 'ios',
-					'priority' => 11,
+					'description' => 'Show Admin Info => slide to turn on setting.',
+					'settings'    => 'show_admin_info',
+					'section'     => 'imagefirst_admin_section',
+					'type'        => 'ios',
+					'priority'    => 11,
 				)
 			)
 		);
@@ -673,11 +671,11 @@ class Customizing_ImageFirst {
 				$customizer_additions,
 				'show_dev_info', array(
 					'label'       => 'Show Developer Info',
-					'description'   => 'Show Developer Info => slide to turn on setting.',
-					'settings'   => 'show_dev_info',
-					'section' => 'imagefirst_admin_section',
-					'type'    => 'ios',
-					'priority' => 12,
+					'description' => 'Show Developer Info => slide to turn on setting.',
+					'settings'    => 'show_dev_info',
+					'section'     => 'imagefirst_admin_section',
+					'type'        => 'ios',
+					'priority'    => 12,
 				)
 			)
 		);

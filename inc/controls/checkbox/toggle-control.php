@@ -1,5 +1,4 @@
 <?php
-
 namespace PMPro_Diagnostics\inc\controls\checkbox;
 
 defined( 'ABSPATH' ) || die( 'File cannot be accessed directly' );
@@ -53,7 +52,7 @@ class Customizer_Toggle_Control extends \WP_Customize_Control {
 			}
 
 		';
-		wp_add_inline_style( 'pure-css-toggle-buttons' , $css );
+		wp_add_inline_style( 'pure-css-toggle-buttons', $css );
 	}
 
 	/**
@@ -70,9 +69,13 @@ class Customizer_Toggle_Control extends \WP_Customize_Control {
 			<?php if ( ! empty( $this->description ) ) : ?>
 				<span class="customize-control-description" style="flex: 2 0 0; vertical-align: middle;"><?php echo esc_html( $this->description ); ?></span>
 			<?php endif; ?>
-				<input id="cb<?php echo $this->instance_number ?>" type="checkbox" class="tgl tgl-<?php echo $this->type?>" value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link();
-				checked( $this->value() ); ?> />
-				<label for="cb<?php echo $this->instance_number ?>" class="tgl-btn"></label>
+				<input id="cb<?php echo $this->instance_number; ?>" type="checkbox" class="tgl tgl-<?php echo $this->type; ?>" value="<?php echo esc_attr( $this->value() ); ?>" 
+										<?php
+										$this->link();
+										checked( $this->value() );
+				?>
+				 />
+				<label for="cb<?php echo $this->instance_number; ?>" class="tgl-btn"></label>
 			</div>
 			<?php if ( empty( $this->description ) ) : ?>
 			<span class="description customize-control-description"><?php echo $this->description; ?></span>

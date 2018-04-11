@@ -1,5 +1,4 @@
 <?php
-
 namespace PMPro_Diagnostics\inc\controls\select;
 
 defined( 'ABSPATH' ) || die( 'File cannot be accessed directly' );
@@ -17,7 +16,7 @@ class Post_Type_Dropdown_Custom_Control extends \WP_Customize_Control {
 	private $post_types = false;
 
 	public function __construct( $manager, $id, $args = array(), $options = array() ) {
-		$postargs = wp_parse_args(
+		$postargs         = wp_parse_args(
 			$options, array(
 				'public' => true,
 			)

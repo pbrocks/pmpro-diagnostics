@@ -1,5 +1,5 @@
 <?php
-namespace CSC_Diagnostics\inc\classes;
+namespace PMPro_Diagnostics\inc;
 
 defined( 'ABSPATH' ) or die( 'File cannot be accessed directly' );
 
@@ -15,7 +15,7 @@ class Admin_Menus {
 	}
 
 	public static function dev_menu_page() {
-		echo '<h2>Dev Admin Menu</h2><h3>' . basename( __FUNCTION__ ). '</h3>';
+		echo '<h2>Dev Admin Menu</h2><h3>' . basename( __FUNCTION__ ) . '</h3>';
 		echo do_shortcode( '[info-message content="something will go here"]' );
 		echo '<p>You can find this file in ';
 		echo '<span style="font-weight: 700;color:salmon;">' . esc_url( plugins_url( '/', __FILE__ ) ) . '</span>';
@@ -30,7 +30,7 @@ class Admin_Menus {
 
 		$mods = get_theme_mods();
 		echo '<pre>';
-		var_dump($mods);
+		var_dump( $mods );
 		echo '</pre>';
 	}
 
@@ -110,11 +110,11 @@ class Admin_Menus {
 	public static function dev_menu() {
 		// if ( current_user_can( 'manage_network' ) ) { // for multisite
 		if ( current_user_can( 'manage_options' ) ) {
-			add_menu_page( 'Dev Admin', 'Dev Admin', 'manage_options', 'dev-admin-menu.php',  array( __CLASS__, 'dev_menu_page' ), 'dashicons-tickets', 13 );
-			add_submenu_page(  'dev-admin-menu.php', 'RAIN Taxonomy', 'RAIN Taxonomy', 'manage_options', 'rain-taxonomy.php',  array( __CLASS__, 'rain_taxonomy_page' ) );
-			add_submenu_page(  'dev-admin-menu.php', 'Dev Arrays', 'Arrays', 'manage_options', 'dev-arrays.php',  array( __CLASS__, 'dev_arrays_page' ) );
-			add_submenu_page(  'dev-admin-menu.php', 'Dev Submenu', 'Menus/Submenus', 'manage_options', 'dev-submenu.php',  array( __CLASS__, 'dev_submenu_page' ) );
-			add_submenu_page(  'dev-admin-menu.php', 'Admin Page HTML', 'Admin Page HTML', 'manage_options', 'dev-taxonomy.php',  array( __CLASS__, 'sample_html_admin_page' ) );
+			add_menu_page( 'Dev Admin', 'Dev Admin', 'manage_options', 'dev-admin-menu.php', array( __CLASS__, 'dev_menu_page' ), 'dashicons-tickets', 13 );
+			add_submenu_page( 'dev-admin-menu.php', 'RAIN Taxonomy', 'RAIN Taxonomy', 'manage_options', 'rain-taxonomy.php', array( __CLASS__, 'rain_taxonomy_page' ) );
+			add_submenu_page( 'dev-admin-menu.php', 'Dev Arrays', 'Arrays', 'manage_options', 'dev-arrays.php', array( __CLASS__, 'dev_arrays_page' ) );
+			add_submenu_page( 'dev-admin-menu.php', 'Dev Submenu', 'Menus/Submenus', 'manage_options', 'dev-submenu.php', array( __CLASS__, 'dev_submenu_page' ) );
+			add_submenu_page( 'dev-admin-menu.php', 'Admin Page HTML', 'Admin Page HTML', 'manage_options', 'dev-taxonomy.php', array( __CLASS__, 'sample_html_admin_page' ) );
 		}
 	}
 
@@ -165,7 +165,7 @@ class Admin_Menus {
 	}
 
 	public static function dev_arrays_page() {
-		echo '<h2>' . basename( __FUNCTION__ ). '</h2>';
+		echo '<h2>' . basename( __FUNCTION__ ) . '</h2>';
 		echo '<pre>';
 		echo 'You can find this file in  <br>';
 		echo plugins_url( '/', __FILE__ );
@@ -178,22 +178,24 @@ class Admin_Menus {
 		echo '<br>';
 		echo '</pre>';
 		$use_cases = new \WP_Query( array( 'post_type' => 'use_cases' ) );
-		echo '<pre> Use Cases'; print_r( $use_cases ); echo '</pre>';
+		echo '<pre> Use Cases';
+		print_r( $use_cases );
+		echo '</pre>';
 		echo '<pre>';
-		    print_r( get_field('use_cases')  );
+			print_r( get_field( 'use_cases' ) );
 		echo '</pre>';
 		die;
 	}
 
 	public static function dev_submenu_page() {
 		global $menu;
-		echo '<h2>' . basename( __FUNCTION__ ). '</h2>';
+		echo '<h2>' . basename( __FUNCTION__ ) . '</h2>';
 		echo '<pre>';
 		echo 'You can find this file in  <br>';
 		echo plugins_url( '/', __FILE__ );
 		print_r( $menu );
 		echo '<br>';
-		echo '<br>ACF path =>' .  plugin_dir_path( __FILE__ ) . 'acf-json<br>';
+		echo '<br>ACF path =>' . plugin_dir_path( __FILE__ ) . 'acf-json<br>';
 		echo '</pre>';
 
 	}

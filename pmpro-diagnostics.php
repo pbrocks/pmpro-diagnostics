@@ -20,6 +20,7 @@ defined( 'ABSPATH' ) || die( 'File cannot be accessed directly' );
 
 require_once 'autoload.php';
 
+new inc\PMPro_Notification( 'Testing Error Notification', 'error' );
 // new inc\Customizing_ImageFirst();
 inc\Dev_Dashboard::init();
 // inc\Customizing_ImageFirst::init();

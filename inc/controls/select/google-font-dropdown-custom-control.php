@@ -1,5 +1,4 @@
 <?php
-
 namespace PMPro_Diagnostics\inc\controls\select;
 
 defined( 'ABSPATH' ) || die( 'File cannot be accessed directly' );
@@ -50,7 +49,7 @@ class Google_Font_Dropdown_Custom_Control extends \WP_Customize_Control {
 	 * @return String
 	 */
 	public function get_fonts( $amount = 30 ) {
-		$selectDirectory = get_stylesheet_directory() . '/customizer-controls/select/';
+		$selectDirectory    = get_stylesheet_directory() . '/customizer-controls/select/';
 		$selectDirectoryInc = get_stylesheet_directory() . '/inc/customizer-controls/select/';
 
 		$finalselectDirectory = '';

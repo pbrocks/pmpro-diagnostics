@@ -1,4 +1,5 @@
 <?php
+namespace PMPro_Diagnostics\inc\controls\layout;
 
 defined( 'ABSPATH' ) || die( 'File cannot be accessed directly' );
 

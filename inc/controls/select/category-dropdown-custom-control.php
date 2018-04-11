@@ -1,6 +1,5 @@
 <?php
-
-namespace PMPro_Diagnostics\inc\controls\checkbox;
+namespace PMPro_Diagnostics\inc\controls\select;
 
 defined( 'ABSPATH' ) || die( 'File cannot be accessed directly' );
 

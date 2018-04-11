@@ -1,5 +1,5 @@
 <?php
-namespace CSC_Diagnostics\inc\classes;
+namespace PMPro_Diagnostics\inc;
 
 defined( 'ABSPATH' ) or die( 'File cannot be accessed directly' );
 
@@ -15,7 +15,7 @@ class Dev_Tools {
 			global $template;
 			$template_name = basename( $template, '.php' );
 			$template_dir  = basename( dirname( $template ) );
-			$style_top = ( is_admin_bar_showing() ) ? '5rem' : '0px';
+			$style_top     = ( is_admin_bar_showing() ) ? '5rem' : '0px';
 			echo '<code style="position:fixed;bottom:' . $style_top . ';right:1rem;z-index:7777; background-color:rgba(255,255,255,0.75); padding:1rem;color:#85368e;border:solid 2px #85368e;">';
 			echo 'theme directory：' . $template_dir;
 			echo '　template：' . $template_name;
@@ -81,8 +81,8 @@ class Dev_Tools {
 		$ret = '';
 		foreach ( $wp_filter[ $hook ] as $priority => $realhook ) {
 			foreach ( $realhook as $hook_k => $hook_v ) {
-				$hook_echo = (is_array( $hook_v['function'] ) ? get_class( $hook_v['function'][0] ) . ':' . $hook_v['function'][1] : $hook_v['function']);
-				$ret .= "\n$priority $hook_echo";
+				$hook_echo = ( is_array( $hook_v['function'] ) ? get_class( $hook_v['function'][0] ) . ':' . $hook_v['function'][1] : $hook_v['function'] );
+				$ret      .= "\n$priority $hook_echo";
 			}
 		}
 		return $ret;
@@ -93,8 +93,8 @@ class Dev_Tools {
 		if ( isset( $wp_filter[ $filterName ] ) ) {
 			foreach ( $wp_filter[ $filterName ] as $priority => $hooks ) {
 				foreach ( $hooks as $hook_k => $hook_v ) {
-					$hook_echo = (is_array( $hook_v['function'] ) ? get_class( $hook_v['function'][0] ) . ':' . $hook_v['function'][1] : $hook_v['function']);
-					if ( is_object( $hook_echo ) && ($hook_echo instanceof Closure) ) {
+					$hook_echo = ( is_array( $hook_v['function'] ) ? get_class( $hook_v['function'][0] ) . ':' . $hook_v['function'][1] : $hook_v['function'] );
+					if ( is_object( $hook_echo ) && ( $hook_echo instanceof Closure ) ) {
 						$hook_echo = 'closure';
 					}
 					error_log( $filterName . ' HOOKED (' . serialize( $priority ) . '): ' . serialize( $hook_k ) . '' . serialize( $hook_echo ) );
@@ -111,7 +111,7 @@ class Dev_Tools {
 
 		$class_methods = get_class_methods( $object );
 		foreach ( $class_methods as $method_name ) {
-			$info .= '<span style="margin-left: 2rem;">' . $method_name . '</span><br>' ;
+			$info .= '<span style="margin-left: 2rem;">' . $method_name . '</span><br>';
 		}
 		return $info;
 	}
@@ -132,7 +132,7 @@ class Dev_Tools {
 	}
 
 	public function get_functions_in_file( $file, $sort = false ) {
-		$file = file( $file );
+		$file      = file( $file );
 		$functions = array();
 		foreach ( $file as $line ) {
 			$line = trim( $line );
@@ -165,7 +165,7 @@ class Dev_Tools {
 	 * @return array
 	 */
 	public static function get_plugins() {
-		$plugins     = array();
+		$plugins = array();
 		include_once ABSPATH . '/wp-admin/includes/plugin.php';
 		$all_plugins = get_plugins();
 		foreach ( $all_plugins as $plugin_file => $plugin_data ) {
@@ -189,10 +189,10 @@ class Dev_Tools {
 	 */
 	public static function debug_info( $html = true ) {
 		global $wp_version, $wpdb, $wp_scripts;
-		$wp          = $wp_version;
-		$php         = phpversion();
-		$mysql       = $wpdb->db_version();
-		$plugins = self::get_plugins();
+		$wp            = $wp_version;
+		$php           = phpversion();
+		$mysql         = $wpdb->db_version();
+		$plugins       = self::get_plugins();
 		$stylesheet    = get_stylesheet();
 		$theme         = wp_get_theme( $stylesheet );
 		$theme_name    = $theme->get( 'Name' );
@@ -253,12 +253,12 @@ class Dev_Tools {
 		global $wp_version, $wpdb;
 
 		$data = array(
-			'WordPress Version:'     => $wp_version,
-			'PHP Version:'           => phpversion(),
-			'MySQL Version:'         => $wpdb->db_version(),
+			'WordPress Version:' => $wp_version,
+			'PHP Version:'       => phpversion(),
+			'MySQL Version:'     => $wpdb->db_version(),
 			// ''                       => '<br><br>',
-			'WPDB Prefix:'           => $wpdb->prefix,
-			'WP_DEBUG:'              => ( WP_DEBUG ) ? WP_DEBUG : 'false',
+			'WPDB Prefix:'       => $wpdb->prefix,
+			'WP_DEBUG:'          => ( WP_DEBUG ) ? WP_DEBUG : 'false',
 		);
 		if ( $html ) {
 			$html = '';
